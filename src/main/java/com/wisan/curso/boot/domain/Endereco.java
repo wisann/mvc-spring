@@ -4,15 +4,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Id;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
+
 
 import com.wisan.curso.boot.domain.enums.UF;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "enderecos")
-public class Endereco extends AbstractEntity<Long> {
+public class Endereco {
 
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	@Column(nullable = false)
 	private String logradouro;
 	
@@ -89,6 +97,14 @@ public class Endereco extends AbstractEntity<Long> {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	
 	
 	

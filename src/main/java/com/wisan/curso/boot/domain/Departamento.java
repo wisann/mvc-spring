@@ -4,14 +4,21 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
+
 @Entity
 @Table(name = "departmentos")
-public class Departmento extends AbstractEntity<Long> {
+public class Departamento {
 
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	@Column(nullable = false, unique = true, length = 60)
 	private String nome;
 
@@ -34,4 +41,12 @@ public class Departmento extends AbstractEntity<Long> {
 		this.cargos = cargos;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 }

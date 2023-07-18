@@ -6,17 +6,25 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Id;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
+
 @Entity
 @Table(name = "funcionarios")
 
-public class Funcionario extends AbstractEntity<Long> {
+public class Funcionario {
 
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	@Column(nullable = false, unique = true)
 	private String name;
 
@@ -84,5 +92,13 @@ public class Funcionario extends AbstractEntity<Long> {
 	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 
 }

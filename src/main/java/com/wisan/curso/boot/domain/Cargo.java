@@ -1,24 +1,30 @@
 package com.wisan.curso.boot.domain;
+import javax.persistence.Id;
 
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
+
 @Entity
 @Table(name = "cargos")
-public class Cargo extends AbstractEntity<Long> {
+public class Cargo  {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	@Column(nullable = false, unique = true, length = 60)
 	private String nome;
 	@ManyToOne
 	@JoinColumn(name = "id_departmmento_fk")
-	private Departmento departmento;
+	private Departamento departmento;
 	
 	@OneToMany(mappedBy = "cargo")
 	private List<Funcionario> funcionarios;
@@ -31,11 +37,11 @@ public class Cargo extends AbstractEntity<Long> {
 		this.nome = nome;
 	}
 
-	public Departmento getDepartmento() {
+	public Departamento getDepartmento() {
 		return departmento;
 	}
 
-	public void setDepartmento(Departmento departmento) {
+	public void setDepartmento(Departamento departmento) {
 		this.departmento = departmento;
 	}
 
@@ -46,6 +52,15 @@ public class Cargo extends AbstractEntity<Long> {
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	
 	
 
