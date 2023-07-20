@@ -16,35 +16,35 @@ public class CargoService {
 	private CargoRepository cargoRepository;
 
 	@Transactional(readOnly = true)
-	public void FinById(Long id) {
-		cargoRepository.findById(id);
+	public Cargo FinById(Long id) {
+		return cargoRepository.findById(id).get();
 	}
 
 	@Transactional(readOnly = true)
 	public List<Cargo> findAll() {
 		return cargoRepository.findAll();
 	}
-	
+
 	@Transactional
 	public Cargo insert(Cargo cargo) {
 		return cargoRepository.saveAndFlush(cargo);
 	}
-	
+
 	@Transactional
 	public Cargo update(Cargo cargo, Long id) {
 		Cargo entity = cargoRepository.getReferenceById(id);
 		updateData(entity, cargo);
 		return cargoRepository.saveAndFlush(entity);
 	}
-	
+
 	@Transactional
 	public void delete(Long id) {
 		cargoRepository.deleteById(id);
 	}
+
 	private void updateData(Cargo entity, Cargo obj) {
 		entity.setNome(obj.getNome());
 		entity.setDepartmento(obj.getDepartmento());
 	}
-	
 
 }
