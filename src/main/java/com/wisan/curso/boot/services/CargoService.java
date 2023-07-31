@@ -46,5 +46,6 @@ public class CargoService {
 		entity.setNome(obj.getNome());
 		entity.setDepartmento(obj.getDepartmento());
 	}
-
+	
+	
 }

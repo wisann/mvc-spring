@@ -15,6 +15,6 @@ public class CargoController {
 	
 	@GetMapping("/listar")
 	public String listar() {
-		return "/cargo/lista";
+		return "/cargo/lista"; 
 	}
 }
